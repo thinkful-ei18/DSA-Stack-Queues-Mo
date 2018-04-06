@@ -21,7 +21,8 @@ function main() {
 
   //   console.log(is_palindrome('muaath'));
 
-  syntaxCheck('((5+1)');
+  console.log(syntaxCheck('<(3 + 5) + (2 + 1)>>') === false);
+  console.log(syntaxCheck('"(3 + 5) + (2 + 1)"') === true);
 }
 
 main();

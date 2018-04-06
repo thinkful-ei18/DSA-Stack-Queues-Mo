@@ -42,26 +42,43 @@ function is_palindrome(str) {
 }
 
 function syntaxCheck(str) {
-  let syntaxStack = new Stack();
-  let count = 0;
-  let newStr = '';
+  let stack = new Stack();
+  const openArray = ['(', '{', '[', '<'];
+  const closingArray = [')', '}', ']', '>'];
+  let poppedChar = '';
+
   for (let i = 0; i < str.length; i++) {
-    syntaxStack.push(str[i]);
-  }
-  for (let i = 0; i < str.length; i++) {
-    newStr = syntaxStack.pop();
-    if (newStr === ')') {
-      count += -1;
-    } else if (newStr === '(') {
-      count += 1;
+    if (inArray(str[i], openArray)) {
+      stack.push(str[i]);
+    } else if (inArray(str[i], closingArray)) {
+      poppedChar = stack.pop();
+
+      if (
+        indexOfArray(str[i], closingArray) ===
+        indexOfArray(poppedChar, openArray)
+      ) {
+        continue;
+      } else {
+        return false;
+      }
     }
   }
-
-  if (count === 0) {
-    console.log('Syntax of your string is good');
-  } else {
-    console.log('You are missing parenths');
+  return true;
+}
+function indexOfArray(value, arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (value === arr[i]) {
+      return i;
+    }
   }
+}
+function inArray(value, arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (value === arr[i]) {
+      return true;
+    }
+  }
+  return false;
 }
 
 module.exports = { display, peak, is_palindrome, syntaxCheck };
