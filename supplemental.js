@@ -19,4 +19,26 @@ function peak(stack) {
   console.log(`Top item in stack: ${currNode.data}`);
 }
 
-module.exports = { display, peak };
+function is_palindrome(str) {
+  str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+
+  let bool = false;
+
+  let palinStack = new Stack();
+
+  for (let i = 0; i < str.length; i++) {
+    palinStack.push(str[i]);
+  }
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === palinStack.pop()) {
+      bool = true;
+    } else {
+      bool = false;
+      break;
+    }
+  }
+
+  return bool;
+}
+
+module.exports = { display, peak, is_palindrome };
