@@ -1,6 +1,11 @@
 'use strict';
 const Stack = require('./stack');
-const { display, peak, is_palindrome } = require('./supplemental.js');
+const {
+  display,
+  peak,
+  is_palindrome,
+  syntaxCheck,
+} = require('./supplemental.js');
 
 function main() {
   let starTrek = new Stack();
@@ -14,7 +19,9 @@ function main() {
   starTrek.pop();
   //   display(starTrek);
 
-  console.log(is_palindrome('muaath'));
+  //   console.log(is_palindrome('muaath'));
+
+  syntaxCheck('((5+1)');
 }
 
 main();

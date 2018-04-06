@@ -30,8 +30,12 @@ class Stack {
     //the pointer to the next item and that next item becomes the
     //top of the stack
     const node = this.top;
-    this.top = node.next;
-    return node.data;
+    if (node === null) {
+      console.log('stack is empty cant pop');
+    } else {
+      this.top = node.next;
+      return node.data;
+    }
   }
 }
 

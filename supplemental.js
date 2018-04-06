@@ -41,4 +41,27 @@ function is_palindrome(str) {
   return bool;
 }
 
-module.exports = { display, peak, is_palindrome };
+function syntaxCheck(str) {
+  let syntaxStack = new Stack();
+  let count = 0;
+  let newStr = [];
+  for (let i = 0; i < str.length; i++) {
+    syntaxStack.push(str[i]);
+  }
+  for (let i = 0; i < str.length; i++) {
+    newStr = syntaxStack.pop();
+    if (newStr === ')') {
+      count += -1;
+    } else if (newStr === '(') {
+      count += 1;
+    }
+  }
+
+  if (count === 0) {
+    console.log('Syntax of your string is good');
+  } else {
+    console.log('You are missing parenths');
+  }
+}
+
+module.exports = { display, peak, is_palindrome, syntaxCheck };
