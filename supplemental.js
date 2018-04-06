@@ -44,7 +44,7 @@ function is_palindrome(str) {
 function syntaxCheck(str) {
   let syntaxStack = new Stack();
   let count = 0;
-  let newStr = [];
+  let newStr = '';
   for (let i = 0; i < str.length; i++) {
     syntaxStack.push(str[i]);
   }
